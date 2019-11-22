@@ -20,7 +20,7 @@ Plan of creating:
         3.1.2) make class INFCP for influencing between our car and the object in pit-stop
         3.1.3) make timer and counter of fuel, quality of wheels
         3.1.4) do finish line create after out off time of the race, not creating new other car and class INFCL for crossing finish line  with our car, car stop if fuel is low, car die if wheels are destroyed                  
-      3.2) postapocalipses:
+      3.2) postapocalipses: https://i.gifer.com/8Cfx.gif
         3.2.1) upgrade CAR adding gun, that can rotate (absolutely like inlast lab)
         3.2.2) input class MONSTER, which we would go along y-axe on our car and we need to shoot them
         3.2.3) make class SHOOTING with objects boolets, that would kill monsters and disapear if touch other cars, which are state and dead.
