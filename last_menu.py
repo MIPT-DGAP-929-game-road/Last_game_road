@@ -43,6 +43,7 @@ def menu_view():
 	
 def keypress_menu(event):
 	global button, number, inf_num, button_exit, button_text, button_text_show, enter_exam, num_exit
+	global window_exit, question_exit, exit_yes, exit_no
 	print(event.keycode, number)
 
 	if enter_exam == 0:
@@ -104,7 +105,10 @@ def keypress_menu(event):
 				if num_exit == 2:
 					number = inf_num + 1
 					enter_exam = 0
-					menu_view()
+					i = 6
+					button[i] = canv.create_rectangle(600,130+(i-1)*50,900,180+(i-1)*50, fill='orange')
+					button_text[i] = canv.create_text((600+900)/2, (130+180)/2+(i-1)*50, text=button_text_show[i-1], justify=CENTER, font="Verdana 14", fill='black')
+					canv.delete(window_exit, question_exit, exit_yes, exit_no)	
 		event.keycode = 0
 		print(enter_exam)
 	
