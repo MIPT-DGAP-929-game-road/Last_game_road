@@ -2,7 +2,7 @@ from tkinter import *
 from random import randrange as rnd, choice
  
 root = Tk()
-root.geometry('1500x650+0+0')
+root.geometry('1500x800+0+0')
  
 canv = Canvas(bg='white')
 canv.pack(fill=BOTH,expand=1)
@@ -11,7 +11,28 @@ canv.pack(fill=BOTH,expand=1)
 enter_exam = 0
 number = 1
 
-def menu_view():
+def intro():
+	print('intro')
+
+def last_instruction():
+	print('instruction')
+
+def last_train():
+	print('last_train')
+
+def last_play():
+	print('last_play')
+
+def last_results():
+	print('last_results')
+
+def last_skins():
+	print('last_skins')
+
+def last_settings():
+	print('last_settings')
+
+def menu():
 	global button, number, inf_num, button_exit, button_text, button_text_show, enter_exam
 	font = canv.create_rectangle(0,0,1500,800, fill='orange')
 	road = canv.create_rectangle(300,0,1200,800, fill='gray')
@@ -21,8 +42,8 @@ def menu_view():
 
 	button = []
 	button_text = []
-	button_text_show = ['1','2','3','4','5','6','7','8','9']
-	inf_num = 8
+	button_text_show = ['instruction','alone training','two players game','table of results','skin changing','settings']
+	inf_num = len(button_text_show)
 	for i in range(0,inf_num+1): 
 		button.append(0)
 		button_text.append(0)
@@ -72,10 +93,22 @@ def keypress_menu(event):
 				button_text[i] = canv.create_text((600+900)/2, (130+180)/2+(i-1)*50, text=button_text_show[i-1], justify=CENTER, font="Verdana 14", fill='black')
 		
 		if event.keycode == 13:
-			print(number,"use")
+			print(number,"use enter")
 			enter_exam = number
 			if number < inf_num+1 and number >= 1:
-				canv.create_text(50, 50+20*number, text=str(number), font="Verdana 16", fill='black') 
+				canv.create_text(50, 50+20*number, text=str(number)+'пока так', font="Verdana 16", fill='black')
+				if number == 1:
+					last_instruction()
+				if number == 2:
+					last_train()
+				if number == 3:
+					last_play()
+				if number == 4:
+					last_results()
+				if number == 5:
+					last_skins()
+				if number == 6:
+					last_settings()
 			if number == inf_num+1:
 				window_exit = canv.create_rectangle(500,200,1000,500, fill='purple', outline='white')
 				question_exit = canv.create_text((500+1000)/2, 200+(500-200)/3, text='Are you sure wanna out?', justify=CENTER, font="Verdana 16", fill='white')
@@ -83,7 +116,7 @@ def keypress_menu(event):
 				exit_no = canv.create_text(500+(-500+1000)*2/3, 200+(500-200)*2/3, text='NO', justify=CENTER, font="Verdana 16", fill='white')
 				num_exit = 0
 		event.keycode = 0
-		print(enter_exam)
+		print('enter_exam',enter_exam)
 	if enter_exam != 0:
 		if number < inf_num+1 and number >= 1:
 			enter_exam = 0
@@ -110,8 +143,10 @@ def keypress_menu(event):
 					button_text[i] = canv.create_text((600+900)/2, (130+180)/2+(i-1)*50, text=button_text_show[i-1], justify=CENTER, font="Verdana 14", fill='black')
 					canv.delete(window_exit, question_exit, exit_yes, exit_no)	
 		event.keycode = 0
-		print(enter_exam)
-	
-menu_view()
+		print('enter_exam', enter_exam)
+
+#--------------------------------------------------------------------------------------------------------------------------
+intro()	
+menu()
 root.bind('<Key>',keypress_menu)
 mainloop()
